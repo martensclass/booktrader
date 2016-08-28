@@ -1,31 +1,47 @@
 <html>
     <head>
-        <title>Night Out Planner</title>
+        <title>ReadCycle - A Fun Way To Trade Your Books Online</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
            <link rel='stylesheet' type='text/css'
-            href='/stylesheets/bootstrap.min.css'>
+            href='/stylesheets/bootstrap.css'>
         <link rel='stylesheet' type='text/css'
             href='/stylesheets/app.css'>
+            <link rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'></script>
              <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-  
+             <script src="js/bootstrap.min.js" ></script>
+ 
     </head>
     <body>
+        <div class='container'>
     <div class='navbar navbar-inverse'>
         <div class='container-fluid'>
             <div class='navbar-header'>
-            <buton type='button' class='navbar-toggle' data-toggle='collapse' data-target="#navcontent">
+            <buton type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target="#mynavbar-content">
                 <span class='icon-bar'></span>
                 <span class='icon-bar'></span>
                 <span class='icon-bar'></span>
             </buton>
-            <a class='navbar-brand' href='#'>My Site</a>
+            <a class='navbar-brand' href='#'>read <i class="fa fa-book"></i> Cycle</a>
         </div>
-        <div class='collapse navbar-collapse' id='#navcontent'>
+        <div class='collapse navbar-collapse' id='mynavbar-content'>
             <ul class='nav navbar-nav'>
-                <li class='active'><a href='#'>Home</a></li>
-                <li><a href='#'>Pricing</a></li>
-                <li><a href='#'>Contact</a></li>
-                <li><a href='#'>Feedback</a></li>
+                <li class='active' id='home'><a href='/'>Home</a></li>
+                <% if(currentUser){ %>
+                 <li id='allbooks'><a href='/allbooks'>View All Books</a></li>
+                  <% } %>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            <% if(currentUser){ %>
+             
+                <li id='profile'><a href='/profile'>Hello <%=currentUser.username %> (Edit Profile)</a></li>
+                    <li id='search'><a href='/search'>| My Books</a></li>
+                <li id='logout'><a href='/logout'>Logout</a></li>
+            <% } else { %>
+                <li id='login'><a href='/login'>Login</a></li>
+                <li id='register'><a href='/register'>Register</a></li>
+            <% } %>
             </ul>
         </div>
         </div>
     </div>
+</div>

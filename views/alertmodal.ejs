@@ -1,0 +1,33 @@
+ <% include ./partials/header %>
+ <div class='container'>
+     <div class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>Warning!</strong> Better check yourself, you're not looking too good.
+    </div>
+<!-- Modal -->
+<div id="theModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+ <button class='btn btn-primary btn-lg' data-toggle='modal' data-target='#theModal' id="#btnopen" data-backdrop='static'>Open Modal</button>
+ 
+</div>
+<hr>
+
+ <% include ./partials/footer %>
+ 

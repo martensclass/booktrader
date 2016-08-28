@@ -1,0 +1,58 @@
+ <% include ./partials/header %>
+ <div class='container'>
+         <h3 style='margin-top: 0px;'>Regular Form</h3>
+     <form class='form'>
+         <div class='form-group'>
+             <label for='userField'>Username</label>
+             <input type='text' class='form-control' id='userField' name='userField' placeholder='Enter username'>
+         </div>
+         <div class='form-group'>
+         <label for='passField'>Password</label>
+             <input type='password' class='form-control' id='passField' name='passField' placeholder='Enter password'>
+         </div>
+         <button type='submit' class='btn btn-primary'>Submit</button>
+     </form>
+     <hr>
+     <h3>Horizontal Form</h3>
+     <form class='form-horizontal'>
+       <div class='form-group'>
+             <label for='userField' class='col-xs-2'>Username</label>
+             <div class='col-xs-10'>
+                 <input type='text' class='form-control' id='userField' name='userField' placeholder='Enter username'>
+             </div>
+        </div>
+        <div class='form-group'>
+             <label for='passField' class='col-xs-2'>Password</label>
+             <div class='col-xs-10'>
+                 <input type='password' class='form-control' id='passField' name='passField' placeholder='Enter password'>
+             </div>
+        </div>
+        <div class='form-group'>
+             <label for='commentField' class='col-xs-2'>Comments</label>
+             <div class='col-xs-10'>
+                 <textarea class='form-control' id='commentField' name='commentField' placeholder='Enter comments'></textarea>
+             </div>
+        </div>
+        
+         <div class='col-xs-10 col-xs-offset-2'>
+              <button type='submit' class='btn btn-primary'>Submit</button>
+        </div>
+     </form>
+     <br><br>
+      <hr>
+      <h3>Inline Form With Large Inputs</h3>
+      <div class='well'>
+          <form class='form-inline'>
+              <div class='form-group'>
+                 <label for='userField'>Username</label>
+                 <input type='text' class='form-control input-lg' id='userField' name='userField' placeholder='Enter username'>
+             </div>&nbsp;&nbsp;
+             <div class='form-group'>
+                 <label for='passField'>Password</label>
+                 <input type='password' class='form-control input-lg' id='passField' name='passField' placeholder='Enter password'>
+             </div>&nbsp;&nbsp;
+         <button type='submit' class='btn btn-primary'>Submit</button>
+          </form>
+      </div>
+ </div>
+ <% include ./partials/footer %>

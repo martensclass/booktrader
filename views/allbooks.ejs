@@ -1,0 +1,158 @@
+<html ng-app='ngapp2'>
+    <head>
+        <title>ReadCycle - A Fun Way To Trade Your Books Online</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+           <link rel='stylesheet' type='text/css'
+            href='/stylesheets/bootstrap.css'>
+        <link rel='stylesheet' type='text/css'
+            href='/stylesheets/app.css'>
+            <link rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'></script>
+             <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+             <script src="js/bootstrap.min.js" ></script>
+             <script type="text/javascript">
+                var userid = "<%=currentUser.id %>";
+                
+            </script>
+ 
+    </head>
+    <body>
+        <div class='container'>
+    <div class='navbar navbar-inverse'>
+        <div class='container-fluid'>
+            <div class='navbar-header'>
+            <buton type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target="#mynavbar-content">
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+            </buton>
+            <a class='navbar-brand' href='#'>read <i class="fa fa-book"></i> Cycle</a>
+        </div>
+         <div class='collapse navbar-collapse' id='mynavbar-content'>
+            <ul class='nav navbar-nav'>
+                <li class='active' id='home'><a href='/'>Home</a></li>
+                <% if(currentUser){ %>
+                 <li id='allbooks'><a href='/allbooks'>View All Books</a></li>
+                  <% } %>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            <% if(currentUser){ %>
+                <li id='profile'><a href='/profile'>Hello <%=currentUser.username %> (Edit Profile)</a></li>
+                 <li id='search'><a href='/search'>| My Books</a></li>
+                <li id='logout'><a href='/logout'>Logout</a></li>
+            <% } else { %>
+                <li id='login'><a href='/login'>Login</a></li>
+                <li id='register'><a href='/register'>Register</a></li>
+            <% } %>
+            </ul>
+        </div>
+        </div>
+    </div>
+</div>
+
+ <div class='container' ng-controller='main'>
+  <h2>Your Pending Trade Requests</h2>
+  <div class='row'>
+       <div class='col col-md-1 trbox' ng-repeat='trade in mytrades' ng-show='trade.status=="pending"'>
+            <img ng-src={{trade.book}} style="height: 100px; width:100px" class='img-thumbnail'>
+            <center><button class='btn btn-xs btn-danger tradebtn' ng-click='delTrade(trade.fromUser,trade.toUser,trade.book)'>Cancel</button></center>
+      </div>
+      </div>
+     <h2>All books in readCycle</h2>
+     <p>Click a book to request a trade. </p>
+     <hr>
+ <div class='row'>
+    <% books.forEach(function(b){ %>
+       <div class='col col-md-2 bookbox' data-trid = '<%=b.book %><%=b.user%>'>
+             <% if(currentUser.id == b.user || b.status!='nt' || b.status=="tr"){ %>
+           <div class='imgbox stopbox' style="margin-bottom: 20px; height: 200px; width:150px; border: 4px solid yellow; padding: 10px; background-image: url('<%=b.book%>'); background-size:150px 200px; cursor:pointer">
+          <% } else { %>
+          <div ng-click="trade('<%=b.book%>', '<%=currentUser.id %>', '<%=b.user%>')" class='imgbox gobox' style="margin-bottom: 20px; height: 200px; width:150px; padding: 10px; background-image: url('<%=b.book%>'); background-size:150px 200px; cursor:pointer">
+           <% } %>
+          <% if(currentUser.id == b.user){ %>
+           <div class='infobox'>
+               This is your book
+           </div>
+           <% } else if(b.status=="tr"){ %>
+           <div class='requestbox'>
+               Requested
+           </div>
+           <% } else if(b.status=="xt"){ %>
+           <div class='pendbox'>
+               Trade Pending
+           </div>
+            <% } else if(b.status=="ap"){ %>
+           <div class='pendbox'>
+               Not Available
+           </div>
+           <% } else { %>
+           <div class='tradebox'>
+               Request Trade
+           </div>
+          <% } %>
+           </div>
+            
+      </div>
+ 
+    
+    <% }) %>
+        </div>  
+ </div>
+ </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js'></script>
+  
+ <script src="/js/ngapp2.js" ></script>
+ 
+ <script>
+     $(startup);
+     
+     function startup(){
+          $(".nav li").removeClass("active");
+           $('#allbooks').addClass('active');
+         $(".tradebox").hide();
+         $('.stopbox').off("click");
+         $('.trbox').hide();
+          $('.gobox').click(function(){
+             $(this).off('click'); //d
+          });
+        
+         $('.imgbox').mouseover(function(){
+                $(this).children().show();
+         });
+         $('.imgbox').mouseout(function(){
+             var txt =  $(this).children(':nth-child(1)').attr('class');
+             if(txt == "tradebox")
+             $(this).children().hide();
+         });
+         
+          $('.tradebtn').click(function(){
+           console.log('here');
+           /*   var id = $(this).attr('trid');
+              $('.bookbox').each(function(index){
+                 console.log($(this).attr('trid'));
+                  if($(this).attr('trid')==id){
+                 
+                  }
+              });
+              console.log(id);
+              */
+          });
+             
+         $('.imgbox').click(function(){
+             var txt =  $(this).children(':nth-child(1)').attr('class');
+             if(txt != "tradebox") return;
+             if(txt == "tradebox"){
+                 $(this).children(':nth-child(1)').removeClass('tradebox');
+                 $(this).children(':nth-child(1)').addClass('requestbox');
+                 $(this).children(':nth-child(1)').html('Requested');
+             }
+             //alert($(this).attr('id'));
+             $('.stopbox').off("click");
+         });
+         
+     }
+ 
+     
+ </script>
+
+<% include ./partials/footer %>

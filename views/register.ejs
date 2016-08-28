@@ -1,0 +1,24 @@
+<% include ./partials/header %>
+ <div class='container'>
+         <h3 style='margin-top: 0px;'>Register as a New User for readCycle</h3>
+     <form class='form' action='/register' method='POST'>
+         <div class='form-group'>
+             <label for='userField'>Username</label>
+             <input type='text' class='form-control' id='userField' name='username' placeholder='Enter username'>
+         </div>
+         <div class='form-group'>
+         <label for='passField'>Password</label>
+             <input type='password' class='form-control' id='passField' name='password' placeholder='Enter password'>
+         </div>
+         <button type='submit' class='btn btn-primary'>Register</button>
+     </form>
+     <p>Already a registered user? </p> <a href='/login' class='btn btn-info'>Login</a></p>
+     </div>
+     <script>
+ $(startup);
+ function startup(){
+  $(".nav li").removeClass("active");
+   $('#register').addClass('active');
+ }
+</script>
+ <% include ./partials/footer %> 

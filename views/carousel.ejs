@@ -1,0 +1,58 @@
+<% include ./partials/header %>
+<div class='container'>
+ <div class='row'>
+         <div class='col-md-12 text-center'>
+            <h2> Sample Carousel</h2>
+            <hr>
+         </div>
+     </div>
+<div class='row'>
+    <div class='col-md-8 col-md-offset-2'>
+        <div id="myslider" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myslider" data-slide-to="0" class="active"></li>
+            <li data-target="#myslider" data-slide-to="1"></li>
+            <li data-target="#myslider" data-slide-to="2"></li>
+          </ol>
+        
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="item active">
+                <img src='http://www.scenic.org/storage/images/vermont-green-trees.jpg'>
+                <div class="carousel-caption">
+                      <h4>Hanging Tree</h4>
+                    <p>This is the first tree</p>
+                </div>
+            </div>
+            
+            <div class="item">
+                <img src='http://cdn.bigbangfish.com/beautiful/beautiful-trees/beautiful-trees-8.jpg'>
+                <div class="carousel-caption">
+                        <h4>Bridge Tree</h4>
+                        <p>This is a bridge made out of a tree</p>
+                </div>
+            </div>
+            
+            <div class="item">
+              <img src='http://ascendingthegiants.com/media/images/oak_800_600.jpg'>
+              <div class="carousel-caption">
+                   <h4>Gnarly Tree</h4>
+                    <p>This tree goes all over the place.</p>
+              </div>
+            </div>
+          </div><!--end carousel inner -->
+        
+          <!-- Controls -->
+          <a class="left carousel-control" href="#myslider" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a class="right carousel-control" href="#myslider" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+        </div> <!--end slider -->
+    </div> <!--end col -->
+</div> <!--end row -->
+        
+</div>
+<% include ./partials/footer %>
