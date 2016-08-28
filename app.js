@@ -7,7 +7,9 @@ var mongoose=require('mongoose'),
     LocalStrategy=require('passport-local'),
     app=express();
     
-mongoose.connect("mongodb://localhost/books");
+//mongoose.connect("mongodb://localhost/books");
+var url=process.env.DBURL || "mongodb://localhost/books";
+mongoose.connect(url);
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
