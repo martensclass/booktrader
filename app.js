@@ -240,28 +240,6 @@ app.post('/profile',function(req,res){
      });
 });
 
-app.get('/tabs', function (req,res){
-    res.render('tabs.ejs');
-});
-
-
-
-app.get('/grid', function (req,res){
-    res.render('grid.ejs');
-});
-
-app.get('/alertmodal', function (req,res){
-    res.render('alertmodal.ejs');
-});
-app.get('/toggles', function (req,res){
-    res.render('toggles.ejs');
-});
-app.get('/collapse', function (req,res){
-    res.render('collapse.ejs');
-});
-app.get('/carousel', function (req,res){
-    res.render('carousel.ejs');
-});
 
 //to compile less at command line for this project:
 // $ lessc bootstrap/bootstrap.less public/stylesheets/bootstrap.css
